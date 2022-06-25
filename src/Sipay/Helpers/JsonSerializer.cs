@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Sipay.Base;
-using Sipay.Models;
+using Sipay.Settings;
 
 namespace Sipay.Helpers
 {

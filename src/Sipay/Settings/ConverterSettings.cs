@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Sipay.Models
+namespace Sipay.Settings
 {
     public static class Converter
     {

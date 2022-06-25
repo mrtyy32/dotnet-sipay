@@ -3,12 +3,12 @@ using Sipay.Base;
 
 namespace Sipay.Models.Response
 {
-    public partial class InstallmentResponse : BaseResponse
+    public class InstallmentResponse : BaseResponse
     {
         [JsonProperty("data")] public InstallmentData Data { get; set; }
     }
 
-    public partial class InstallmentData
+    public class InstallmentData
     {
         [JsonProperty("pos_id")] public int PosId { get; set; }
 

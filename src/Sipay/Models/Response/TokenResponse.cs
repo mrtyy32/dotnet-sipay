@@ -1,15 +1,15 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using Newtonsoft.Json;
 using Sipay.Base;
 
-namespace Sipay.Models.Response.Token
+namespace Sipay.Models.Response
 {
-    public partial class TokenResponse : BaseResponse
+    public class TokenResponse : BaseResponse
     {
         [JsonProperty("data")] public TokenData Data { get; set; }
     }
 
-    public partial class TokenData
+    public class TokenData
     {
         [JsonProperty("status_code")] public string StatusCode { get; set; }
 

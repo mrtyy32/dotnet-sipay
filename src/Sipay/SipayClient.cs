@@ -1,14 +1,16 @@
-﻿using Sipay.Models.Request;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Sipay.Base;
+using Sipay.Models.Request;
+using Sipay.Models.Response;
 using Sipay.Settings;
 
 namespace Sipay
 {
     public class SipayClient : ISipayBuilder
     {
-        private Models.Request.SipayRequest request;
+        private SipayRequest request;
         private SipayClientSettings clientSettings;
+        private RestHttpClient restHttpClient;
 
         private string TEST_MERCHANT_KEY = "$2y$10$HmRgYosneqcwHj.UH7upGuyCZqpQ1ITgSMj9Vvxn.t6f.Vdf2SQFO";
         private string TEST_APP_KEY = "6d4a7e9374a76c15260fcc75e315b0b9";
@@ -16,14 +18,15 @@ namespace Sipay
         private string TEST_URL = "https://provisioning.sipay.com.tr/ccpayment/api";
         private string PROD_URL = "https://app.sipay.com.tr/ccpayment/api/";
         private string _baseUrl;
-        private string _tokenUrl = $"/token";
-        private string _paymentUrl = $"/paySmart3D";
+        private string _tokenUrl = "/token";
+        private string _paymentUrl = "/paySmart3D";
 
         public SipayClient(bool test = false)
         {
-            request = new Models.Request.SipayRequest();
+            request = new SipayRequest();
             clientSettings = new SipayClientSettings();
-            this.Test(test);
+            restHttpClient = new RestHttpClient();
+            Test(test);
         }
 
         public ISipayBuilder CreditCard(string cardholderName, string creditCardNumber, string expiryMonth,
@@ -93,31 +96,40 @@ namespace Sipay
 
         public ISipayBuilder Execute(string token = "")
         {
-            if (string.IsNullOrEmpty(token))
-            {
-                this.GetToken();
-                return this;
-            }
-
+            var uri = $"{_baseUrl}{_paymentUrl}";
+            if (string.IsNullOrEmpty(token)) token = GetToken();
+            
+            var response = restHttpClient.PostData<ThreeDResponse, SipayRequest>(uri, request);
+            //TODO
             return this;
         }
 
         public ISipayBuilder Test(bool isTest = true)
         {
-            this._baseUrl = isTest ? TEST_URL : PROD_URL;
+            _baseUrl = isTest ? TEST_URL : PROD_URL;
+
             if (!isTest) return this;
 
-            clientSettings.AppId = this.TEST_APP_KEY;
-            clientSettings.AppSecret = this.TEST_SECRET_KEY;
-            clientSettings.MerchantKey = this.TEST_MERCHANT_KEY;
-            clientSettings.BaseUrl = this._baseUrl;
+            clientSettings.AppId = TEST_APP_KEY;
+            clientSettings.AppSecret = TEST_SECRET_KEY;
+            clientSettings.MerchantKey = TEST_MERCHANT_KEY;
+            clientSettings.BaseUrl = _baseUrl;
+
             return this;
         }
 
         private string GetToken()
         {
-            //TODO
-            return "";
+            var tokenRequest = new TokenRequest
+            {
+                AppSecret = clientSettings.AppSecret,
+                AppId = clientSettings.AppId
+            };
+            
+            var uri = $"{_baseUrl}{_tokenUrl}";
+            var response = restHttpClient.PostData<TokenResponse, TokenRequest>(uri, tokenRequest);
+
+            return response.Data.StatusCode;
         }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using Sipay.Base;
 
 namespace Sipay.Models.Request
 {
-    public partial class SipayRequest
+    public partial class SipayRequest : BaseRequest
     {
         [JsonProperty("hash_key")] public string Hash { get; set; }
 

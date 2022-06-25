@@ -3,12 +3,12 @@ using Sipay.Base;
 
 namespace Sipay.Models.Response
 {
-    public partial class ThreeDResponse : BaseResponse
+    public class ThreeDResponse : BaseResponse
     {
         [JsonProperty("data")] public ThreeDResponseData Data { get; set; }
     }
 
-    public partial class ThreeDResponseData
+    public class ThreeDResponseData
     {
         [JsonProperty("sipay_status")] public int SipayStatus { get; set; }
 

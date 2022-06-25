@@ -39,7 +39,7 @@ namespace Sipay.Helpers
 
             var password = Sha1Hash(appSecret);
 
-            IList<string> mainStringArray = hashKey.Split(':').ToList<string>();
+            IList<string> mainStringArray = hashKey.Split(':').ToList();
 
             if (mainStringArray.Count == 3)
             {
@@ -54,7 +54,7 @@ namespace Sipay.Helpers
                 }
 
                 var orginalValues = Decryptor(mainKey, saltWithPassword.Substring(0, 32), iv);
-                IList<string> valueList = orginalValues.Split('|').ToList<string>();
+                IList<string> valueList = orginalValues.Split('|').ToList();
 
                 return valueList;
             }

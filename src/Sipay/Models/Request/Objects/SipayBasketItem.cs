@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
+using Sipay.Settings;
 
 namespace Sipay.Models.Request
 {
-    public partial class SipayBasketItem
+    public class SipayBasketItem
     {
         [JsonProperty("name")] public string Name { get; set; }
 

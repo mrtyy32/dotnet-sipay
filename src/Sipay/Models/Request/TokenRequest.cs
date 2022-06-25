@@ -1,6 +1,8 @@
-﻿namespace Sipay.Models.Request
+﻿using Sipay.Base;
+
+namespace Sipay.Models.Request
 {
-    public class TokenRequest
+    public class TokenRequest : BaseRequest
     {
         public string AppId { get; set; }
         public string AppSecret { get; set; }
