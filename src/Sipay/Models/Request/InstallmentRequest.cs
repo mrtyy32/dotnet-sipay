@@ -1,4 +1,4 @@
-﻿namespace Sipay.Models.Request.Installment
+﻿namespace Sipay.Models.Request
 {
 	public class InstallmentRequest
 	{

@@ -9,5 +9,8 @@ namespace Sipay
 
 		[JsonProperty("surname")]
 		public string LastName { get; set; }
+		
+		[JsonProperty("ip")]
+		public string IpAddress { get; set; }
 	}
 }
