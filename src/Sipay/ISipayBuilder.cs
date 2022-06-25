@@ -32,8 +32,9 @@ namespace Sipay
 		/// </summary>
 		/// <param name="firstName">Müşteri isim</param>
 		/// <param name="lastName">Müşteri soyisim</param>
+		/// <param name="ipAddress">Müşteri ip bilgisi</param>
 		/// <returns></returns>
-		ISipayBuilder Customer(string firstName, string lastName);
+		ISipayBuilder Customer(string firstName, string lastName, string ipAddress);
 
 		/// <summary>
 		/// Ödeme alınan müşterinin fatura bilgileri

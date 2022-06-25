@@ -32,7 +32,7 @@ namespace Sipay
 			return this;
 		}
 		
-		public ISipayBuilder Customer(string firstName, string lastName)
+		public ISipayBuilder Customer(string firstName, string lastName, string ipAddress)
 		{
 			request.FirstName = firstName;
 			request.LastName = lastName;
