@@ -44,14 +44,16 @@ namespace Sipay
         }
 
         public TResponse PostData<TResponse, TRequest>(string endPoint, TRequest model,
-            Dictionary<string, string> headers = null) where TRequest : BaseRequest where TResponse : BaseResponse
+            Dictionary<string, string> headers = null, bool isForm = false) where TRequest : BaseRequest
+            where TResponse : BaseResponse
         {
             var requestMessage = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
                 RequestUri = new Uri(endPoint),
-                Content = new StringContent(model.ToJson())
+                Content = new StringContent(model.ToJson()),
             };
+            requestMessage.Headers.Add("Accept", isForm ? "application/x-www-form-urlencoded" : "application/json");
 
             if (headers != null)
                 foreach (var header in headers)
