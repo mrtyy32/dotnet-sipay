@@ -6,8 +6,9 @@ namespace Sipay.Base
     public interface ISipayBuilder
     {
         /// <summary>
-        /// İşlemler Test sunucusuna yönlendirilir.
+        /// Test modu aktif/pasif edilebilir
         /// </summary>
+        /// <param name="isTest">true ise işlemler Test sunucusuna yönlendirilir</param>
         /// <returns></returns>
         ISipayBuilder Test(bool isTest = true);
 
