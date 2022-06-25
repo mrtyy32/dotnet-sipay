@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Sipay
+namespace Sipay.Models.Request
 {
 	public partial class SipayRequest
 	{

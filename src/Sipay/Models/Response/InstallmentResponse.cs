@@ -1,13 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Sipay.Base;
 
 namespace Sipay.Models.Response
 {
-    public partial class InstallmentResponse
+    public partial class InstallmentResponse : BaseResponse
     {
-        [JsonProperty("status_code")] public int StatusCode { get; set; }
-
-        [JsonProperty("status_description")] public string StatusDescription { get; set; }
-
         [JsonProperty("data")] public InstallmentData Data { get; set; }
     }
 
@@ -40,17 +37,5 @@ namespace Sipay.Models.Response
         [JsonProperty("maturity_period")] public string MaturityPeriod { get; set; }
 
         [JsonProperty("payment_frequency")] public string PaymentFrequency { get; set; }
-    }
-
-    public partial class InstallmentResponse
-    {
-        public static InstallmentResponse FromJson(string json) =>
-            JsonConvert.DeserializeObject<InstallmentResponse>(json, Converter.Settings);
-    }
-
-    public static class Serialize
-    {
-        public static string ToJson(this InstallmentResponse self) =>
-            JsonConvert.SerializeObject(self, Converter.Settings);
     }
 }

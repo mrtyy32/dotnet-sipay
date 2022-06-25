@@ -1,13 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Sipay.Base;
 
 namespace Sipay.Models.Response
 {
-    public partial class ThreeDResponse
+    public partial class ThreeDResponse : BaseResponse
     {
-        [JsonProperty("status_code")] public int StatusCode { get; set; }
-
-        [JsonProperty("status_description")] public string StatusDescription { get; set; }
-
         [JsonProperty("data")] public ThreeDResponseData Data { get; set; }
     }
 
@@ -36,11 +33,5 @@ namespace Sipay.Models.Response
         [JsonProperty("error")] public string Error { get; set; }
 
         [JsonProperty("hash_key")] public string HashKey { get; set; }
-    }
-
-    public partial class ThreeDResponse
-    {
-        public static ThreeDResponse FromJson(string json) =>
-            JsonConvert.DeserializeObject<ThreeDResponse>(json, Converter.Settings);
     }
 }

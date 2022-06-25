@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Sipay.Models.Request.Objects
+namespace Sipay.Models.Request
 {
     public partial class SipayBasketItem
     {

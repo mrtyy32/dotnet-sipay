@@ -1,4 +1,4 @@
-﻿namespace Sipay.Models.Request.Token
+﻿namespace Sipay.Models.Request
 {
     public class TokenRequest
     {

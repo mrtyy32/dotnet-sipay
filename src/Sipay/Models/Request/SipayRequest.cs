@@ -1,8 +1,7 @@
-﻿using Newtonsoft.Json;
-using Sipay.Models.Request.Objects;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
-namespace Sipay
+namespace Sipay.Models.Request
 {
     public partial class SipayRequest
     {
@@ -14,10 +13,6 @@ namespace Sipay
 
         [JsonProperty("items")] public string Items { get; set; }
 
-        //public SipayCard Card { get; set; }
-        //public SipayCustomer Customer { get; set; }
-        //public SipayAddress Address { get; set; }
-        //public SipayOrder Order { get; set; }
         public List<SipayBasketItem> BasketItems { get; set; }
     }
 }
