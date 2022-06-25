@@ -98,8 +98,9 @@ namespace Sipay
         {
             var uri = $"{_baseUrl}{_paymentUrl}";
             if (string.IsNullOrEmpty(token)) token = GetToken();
-            
-            var response = restHttpClient.PostData<ThreeDResponse, SipayRequest>(uri, request);
+
+            var response =
+                restHttpClient.PostData<ThreeDResponse, SipayRequest>(uri, request, AddTokenHeader(token), true);
             //TODO
             return this;
         }
@@ -125,11 +126,19 @@ namespace Sipay
                 AppSecret = clientSettings.AppSecret,
                 AppId = clientSettings.AppId
             };
-            
+
             var uri = $"{_baseUrl}{_tokenUrl}";
             var response = restHttpClient.PostData<TokenResponse, TokenRequest>(uri, tokenRequest);
 
             return response.Data.StatusCode;
+        }
+
+        private Dictionary<string, string> AddTokenHeader(string token)
+        {
+            var header = new Dictionary<string, string>();
+            header.Add("Authorization", $"Bearer{token}");
+
+            return header;
         }
     }
 }
