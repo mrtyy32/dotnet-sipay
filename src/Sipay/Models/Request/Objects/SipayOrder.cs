@@ -12,10 +12,6 @@ namespace Sipay.Models.Request
 
         [JsonProperty("invoice_description")] public string Description { get; set; }
 
-        [JsonProperty("name")] public string Name { get; set; }
-
-        [JsonProperty("surname")] public string Surname { get; set; }
-
         [JsonProperty("total")] public double OrderTotal { get; set; }
     }
 }

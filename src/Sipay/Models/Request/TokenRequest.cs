@@ -1,11 +1,15 @@
-﻿using Sipay.Base;
+﻿using Newtonsoft.Json;
+using Sipay.Base;
 
 namespace Sipay.Models.Request
 {
     public class TokenRequest : BaseRequest
     {
-        public string AppId { get; set; }
-        public string AppSecret { get; set; }
+		[JsonProperty("app_id")]
+		public string AppId { get; set; }
+
+		[JsonProperty("app_secret")]
+		public string AppSecret { get; set; }
 
         public TokenRequest()
         {

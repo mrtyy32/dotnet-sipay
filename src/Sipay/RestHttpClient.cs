@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using Newtonsoft.Json;
 using Sipay.Base;
 using Sipay.Helpers;
+using Sipay.Models.Request;
 
 namespace Sipay
 {
@@ -44,26 +46,53 @@ namespace Sipay
         }
 
         public TResponse PostData<TResponse, TRequest>(string endPoint, TRequest model,
-            Dictionary<string, string> headers = null, bool isForm = false) where TRequest : BaseRequest
-            where TResponse : BaseResponse
+            Dictionary<string, string> headers = null) where TRequest : BaseRequest
         {
-            var requestMessage = new HttpRequestMessage
+			var jsonString = model.ToJson();
+
+			var requestMessage = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
                 RequestUri = new Uri(endPoint),
-                Content = new StringContent(model.ToJson()),
+                Content = new StringContent(jsonString, Encoding.UTF8, "application/json"),
             };
-            requestMessage.Headers.Add("Accept", isForm ? "application/x-www-form-urlencoded" : "application/json");
 
-            if (headers != null)
+			requestMessage.Headers.Add("Accept", "application/json");
+
+			if (headers != null)
                 foreach (var header in headers)
                     requestMessage.Headers.Add(header.Key, header.Value);
 
             var httpResponse = HttpClient.SendAsync(requestMessage).Result;
+			var httpResponseString = httpResponse.Content.ReadAsStringAsync().Result;
 
-            return !httpResponse.IsSuccessStatusCode
-                ? default
-                : JsonConvert.DeserializeObject<TResponse>(httpResponse.Content.ReadAsStringAsync().Result);
+			return !httpResponse.IsSuccessStatusCode ? default
+                : JsonConvert.DeserializeObject<TResponse>(httpResponseString);
         }
-    }
+
+		public string PostData<TResponse, TRequest>(string endPoint, TRequest model,
+			Dictionary<string, string> headers = null, bool isForm = true) where TRequest : SipayRequest
+		{
+			var requestMessage = new HttpRequestMessage
+			{
+				Method = HttpMethod.Post,
+				RequestUri = new Uri(endPoint),
+			};
+
+			if (isForm)
+				requestMessage.Content = new FormUrlEncodedContent(FormHelper.FormKeyValues(model));
+
+			requestMessage.Headers.Add("Accept", "application/json");
+
+			if (headers != null)
+				foreach (var header in headers)
+					requestMessage.Headers.Add(header.Key, header.Value);
+
+			var httpResponse = HttpClient.SendAsync(requestMessage).Result;
+			var httpResponseString = httpResponse.Content.ReadAsStringAsync().Result;
+
+			return !httpResponse.IsSuccessStatusCode ? default
+				: httpResponseString;
+		}
+	}
 }

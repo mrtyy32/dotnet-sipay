@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Sipay.Models.Request;
+using Sipay.Models.Response;
 
 namespace Sipay.Base
 {
@@ -90,6 +91,6 @@ namespace Sipay.Base
         /// <returns></returns>
         ISipayBuilder Callbacks(string returlUrl, string cancelUrl);
 
-        ISipayBuilder Execute(string token = "");
+		string Execute(string token = "");
     }
 }

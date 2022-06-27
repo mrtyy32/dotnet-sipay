@@ -11,7 +11,7 @@ namespace Sipay.Models.Response
 
     public class TokenData
     {
-        [JsonProperty("status_code")] public string StatusCode { get; set; }
+        [JsonProperty("token")] public string Token { get; set; }
 
         [JsonProperty("is_3d")] public int Is3D { get; set; }
 

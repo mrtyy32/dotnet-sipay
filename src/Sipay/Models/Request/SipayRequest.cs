@@ -12,8 +12,11 @@ namespace Sipay.Models.Request
 
         [JsonProperty("return_url")] public string ReturnUrl { get; set; }
 
-        [JsonProperty("items")] public string Items { get; set; }
+		[JsonProperty("merchant_key")] public string MerchantKey { get; set; }
 
+		[JsonProperty("items")] public string Items { get; set; }
+
+		[JsonIgnore]
         public List<SipayBasketItem> BasketItems { get; set; }
     }
 }

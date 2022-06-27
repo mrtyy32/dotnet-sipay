@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E1183F55
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sipay.Test", "tests\Sipay.Test\Sipay.Test.csproj", "{223C3E12-61FC-4D59-8126-628E216045E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sipay.Sample", "tests\Sipay.Sample\Sipay.Sample.csproj", "{B55EDBF9-4280-46E8-A2BE-F18119215FBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{223C3E12-61FC-4D59-8126-628E216045E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{223C3E12-61FC-4D59-8126-628E216045E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{223C3E12-61FC-4D59-8126-628E216045E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B55EDBF9-4280-46E8-A2BE-F18119215FBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B55EDBF9-4280-46E8-A2BE-F18119215FBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B55EDBF9-4280-46E8-A2BE-F18119215FBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B55EDBF9-4280-46E8-A2BE-F18119215FBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{FC5571A8-9DB2-4B3A-89FD-DC94B281D6EA} = {BDC1DD6B-5753-4700-B092-BBA485C28CFD}
 		{223C3E12-61FC-4D59-8126-628E216045E3} = {E1183F55-9C69-4586-B1C2-22BB60B0060C}
+		{B55EDBF9-4280-46E8-A2BE-F18119215FBD} = {E1183F55-9C69-4586-B1C2-22BB60B0060C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C0688466-7CB4-4F1A-8BFD-50B1FCEF3424}

@@ -5,9 +5,9 @@ namespace Sipay.Models.Request
 {
     public class InstallmentRequest : BaseRequest
     {
-        [JsonProperty("credit_card")] public int CreditCard { get; set; }
+        [JsonProperty("credit_card")] public string CreditCard { get; set; }
 
-        [JsonProperty("amount")] public decimal Amount { get; set; }
+        [JsonProperty("amount")] public double Amount { get; set; }
 
         [JsonProperty("currency_code")] public string CurrencyCode { get; set; }
 

@@ -1,11 +1,12 @@
 ﻿using Newtonsoft.Json;
 using Sipay.Base;
+using System.Collections.Generic;
 
 namespace Sipay.Models.Response
 {
     public class InstallmentResponse : BaseResponse
     {
-        [JsonProperty("data")] public InstallmentData Data { get; set; }
+        [JsonProperty("data")] public List<InstallmentData> Data { get; set; }
     }
 
     public class InstallmentData
@@ -22,11 +23,11 @@ namespace Sipay.Models.Response
 
         [JsonProperty("card_program")] public string CardProgram { get; set; }
 
-        [JsonProperty("payable_amount")] public int PayableAmount { get; set; }
+        [JsonProperty("payable_amount")] public double PayableAmount { get; set; }
 
         [JsonProperty("hash_key")] public string HashKey { get; set; }
 
-        [JsonProperty("amount_to_be_paid")] public int AmountToBePaid { get; set; }
+        [JsonProperty("amount_to_be_paid")] public double AmountToBePaid { get; set; }
 
         [JsonProperty("currency_code")] public string CurrencyCode { get; set; }
 

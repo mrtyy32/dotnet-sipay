@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Base\BaseRequest.cs" />
     <Compile Include="Base\BaseResponse.cs" />
+    <Compile Include="Base\Endpoints.cs" />
     <Compile Include="Base\ISipayBuilder.cs" />
     <Compile Include="Helpers\HashHelper.cs" />
     <Compile Include="Helpers\FormHelper.cs" />
@@ -54,10 +55,12 @@
     <Compile Include="Models\Request\Objects\SipayCard.cs" />
     <Compile Include="Models\Request\Objects\SipayCustomer.cs" />
     <Compile Include="Models\Request\Objects\SipayOrder.cs" />
-    <Compile Include="Models\Response\ThreeDResponse.cs" />
+    <Compile Include="Models\Request\RefundRequest.cs" />
     <Compile Include="Models\Request\InstallmentRequest.cs" />
     <Compile Include="Models\Request\TokenRequest.cs" />
     <Compile Include="Models\Response\InstallmentResponse.cs" />
+    <Compile Include="Models\Response\RefundResponse.cs" />
+    <Compile Include="Models\Response\ThreeDResponse.cs" />
     <Compile Include="Models\Response\TokenResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestHttpClient.cs" />
