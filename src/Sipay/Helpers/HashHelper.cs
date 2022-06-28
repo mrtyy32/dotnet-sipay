@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Sipay.Helpers
 {
-    internal class HashHelper
+    public class HashHelper
     {
         public static string GenerateHashKey(string total, string installment, string currencyCode,
             string merchantKey, string invoiceId, string appSecret)

@@ -22,7 +22,7 @@ namespace Sipay.Sample.Controllers
 		[HttpPost]
 		public ActionResult Index(string fakeRoute = "")
 		{
-			var client = new SipayClient(true);
+			var client = new SipayClient(new Settings.SipayClientSettings(), true);
 			var token = client.GetToken();
 			this.HttpContext.Session.Add("token", token);
 
@@ -67,7 +67,7 @@ namespace Sipay.Sample.Controllers
 				Task.Delay(1500);
 
 				//refund 
-				var client = new SipayClient(true);
+				var client = new SipayClient(new Settings.SipayClientSettings(), true);
 				var token = this.HttpContext.Session["token"] as string ?? client.GetToken();
 
 				var refundResponse = client.Refund(response.InvoiceId, 25);

@@ -21,7 +21,7 @@ namespace Sipay
 		private string _baseUrl;
 
 
-		public SipayClient(bool test = false)
+		public SipayClient(SipayClientSettings settings, bool test = false)
 		{
 			request = new SipayRequest();
 			clientSettings = new SipayClientSettings();
@@ -138,14 +138,14 @@ namespace Sipay
 		public ISipayBuilder Test(bool isTest = true)
 		{
 			_baseUrl = isTest ? TEST_URL : PROD_URL;
+			clientSettings.BaseUrl = _baseUrl;
+			request.MerchantKey = clientSettings.MerchantKey;
 
 			if (!isTest) return this;
 
 			clientSettings.AppId = TEST_APP_KEY;
 			clientSettings.AppSecret = TEST_SECRET_KEY;
 			clientSettings.MerchantKey = TEST_MERCHANT_KEY;
-			clientSettings.BaseUrl = _baseUrl;
-
 			request.MerchantKey = clientSettings.MerchantKey;
 
 			return this;
